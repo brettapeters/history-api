@@ -1,0 +1,58 @@
+body {
+  margin: 10px;
+  padding: 0;
+  counter-reset: item;
+}
+
+body.show-slide {
+  height: 100%;
+  overflow: hidden;
+}
+
+ul {
+  width: 25em;
+  padding: 0;
+  margin: 0 auto;
+  list-style: none;
+}
+
+li::before {
+  counter-increment: item;
+  content: "Item " counter(item);
+}
+
+li {
+  padding: 2em 4em;
+  margin: 0.5em;
+  border: 1px solid black;
+  background: #eee;
+  text-align: center;
+}
+
+#back {
+  color: #58a;
+  text-decoration: underline;
+}
+
+#back:hover {
+  color: #69b;
+  cursor: pointer; 
+}
+
+#slide {
+  height: 100vh;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  right: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  font-size: 2em;
+  color: white;
+  padding-top: 3em;
+  text-align: center;
+  transition: right 500ms;
+}
+
+.show-slide #slide {
+  right: 0;
+}
