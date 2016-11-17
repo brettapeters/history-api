@@ -1,58 +1,32 @@
 body {
   margin: 10px;
   padding: 0;
-  counter-reset: item;
 }
 
-body.show-slide {
-  height: 100%;
-  overflow: hidden;
+main {
+  display: inline-block;
+  padding: 0 3em;
+  width: 40em;
 }
 
 ul {
-  width: 25em;
+  display: inline-block;
+  width: 30em;
   padding: 0;
-  margin: 0 auto;
   list-style: none;
-}
-
-li::before {
-  counter-increment: item;
-  content: "Item " counter(item);
+  float: left;
 }
 
 li {
-  padding: 2em 4em;
-  margin: 0.5em;
   border: 1px solid black;
   background: #eee;
   text-align: center;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
 }
 
-#back {
-  color: #58a;
-  text-decoration: underline;
-}
-
-#back:hover {
-  color: #69b;
-  cursor: pointer; 
-}
-
-#slide {
-  height: 100vh;
-  width: 100%;
-  position: fixed;
-  top: 0;
-  right: 100%;
-  background-color: rgba(0, 0, 0, 0.7);
-  font-size: 2em;
-  color: white;
-  padding-top: 3em;
-  text-align: center;
-  transition: right 500ms;
-}
-
-.show-slide #slide {
-  right: 0;
+li a {
+  display: block;
+  height: 100%;
+  padding: 2em 4em;
 }
