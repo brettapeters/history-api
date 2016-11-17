@@ -11,8 +11,8 @@ main {
 
 ul {
   display: inline-block;
-  width: 30em;
-  padding: 0;
+  max-width: 20em;
+  padding: 0 3em;
   list-style: none;
   float: left;
 }

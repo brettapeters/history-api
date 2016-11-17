@@ -17,12 +17,18 @@ document.addEventListener('click', function(e) {
 window.addEventListener('popstate', changePage);
 
 var main = document.querySelector('main');
+var fetchError = '<div class="cc"><h1>Error fetching content :(</h1></div>';
 
 function loadPage(url) {
   return fetch(url, {
     method: 'GET'
   }).then(function(response) {
-    return response.text();
+    if (response.ok) {
+      return response.text();
+    }
+    return fetchError;
+  }).catch(function(err) {
+    return fetchError;
   });
 }
 
@@ -36,14 +42,14 @@ function changePage() {
     var oldContent = document.querySelector('.cc');
     var newContent = wrapper.querySelector('.cc');
 
-    main.appendChild(newContent);
+    main.insertBefore(newContent, main.firstChild);
     animate(oldContent, newContent);
   });
 }
 
 function animate(oldContent, newContent) {
-  oldContent.style.position = 'absolute';
-  oldContent.style.width = '40em';
+  newContent.style.position = 'absolute';
+  newContent.style.width = '40em';
 
   var fadeOut = oldContent.animate({
     opacity: [1, 0]
@@ -55,5 +61,7 @@ function animate(oldContent, newContent) {
 
   fadeIn.onfinish = function() {
     oldContent.parentNode.removeChild(oldContent);
+    newContent.style.position = '';
+    newContent.style.width = '';
   };
 }
